@@ -85,10 +85,10 @@ public class Utils extends BasePage
 //            }
 //        }
     }
-    //(11) Try to click element multiple times if not available in first go
-    public static void tryClickingMultipleTime(By by, int times)
+    //(11) Try to click element multiple if not available in first go
+    public static void clickingMultipleTimes(By by, int index)
     {
-        //driver.findElements(by).get(times).click();
+        driver.findElements(by).get(index).click();
     }
     //(12) is dropdown present
     public static void dropDownPresent(By by, String text)
@@ -254,7 +254,6 @@ public class Utils extends BasePage
     public static void hoverCursor(By by)
     {
         Actions action = new Actions(driver);
-        //WebElement menuOption = driver.findElement(by);
         action.moveToElement(driver.findElement(by)).perform();
     }
 }

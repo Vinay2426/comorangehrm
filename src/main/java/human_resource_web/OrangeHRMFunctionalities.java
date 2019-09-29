@@ -1,14 +1,13 @@
 package human_resource_web;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class OrangeHRMFunctionalities extends Utils {
+public class OrangeHRMFunctionalities extends Utils
+{
     LoadProps loadProps = new LoadProps();
 
     @BeforeMethod
@@ -28,10 +27,10 @@ public class OrangeHRMFunctionalities extends Utils {
     @AfterMethod
     public void quitPage()
     {
-        //driver.quit();
+        driver.quit();
     }
-    @Test
-    public void userShouldBeAbleToLogin()
+    @Test (priority = 1)
+    public void userShouldAbleToLogin()
     {
         //enter login details
         enterText(By.id("txtUsername"), loadProps.getProperty("UserName"));
@@ -42,7 +41,7 @@ public class OrangeHRMFunctionalities extends Utils {
         //compare the result to check test case pass or fail
         assertMethod(By.id("welcome"), "Welcome Admin");
     }
-    @Test
+    @Test (priority = 2)
     public void userShouldAbleToAddNewEmployee()
     {
         //enter login details
@@ -73,11 +72,11 @@ public class OrangeHRMFunctionalities extends Utils {
         //enter Confirm Password
         enterText(By.id("systemUser_confirmPassword"), loadProps.getProperty("NewEmployeeConfirmPassword"));
         //click Save
-        clickOnElements(By.xpath("//input[@class='addbutton']"));
-        //check the result. here, employee name will be checked against actual result
+        clickOnElements(By.xpath("//input[@id='btnSave']"));
+       //check the result. here, employee name will be checked against actual result
         assertMethod(By.xpath("//td[contains(text(),'Jasmine Morgan')]"), loadProps.getProperty("NewEmployee"));
     }
-    @Test
+    @Test (priority = 3)
     public void userShouldAbleToSearchAndVerifyNewAddedEmployeeInDirectory()
     {
         //enter login details
